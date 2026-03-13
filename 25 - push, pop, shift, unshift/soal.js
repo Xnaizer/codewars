@@ -62,22 +62,22 @@ function infiniteLoop(arr,d,n){
             for(let i = 0; i < arr.length; i++) {
                 arr[(Number(i) + n - (n - 1)) % arr.length].unshift(x[i])
             }
-        }
+        } // more array and different value its working 
 
         if(d === "left") {
             for(let i = 0; i < arr.length; i++) {
                 x.push(arr[i].shift())
             }
             for(let i = 0; i < arr.length; i++) {
-                arr[(Number(i)  + (n * 2) + (n - 1)) % arr.length].push(x[i])
+                arr[(Number(i) + (arr.length - 1)) % arr.length].push(x[i])
             }
-        }
+        } // bug fix, everything all right
     }
 
     return arr
 
 }
 
-console.log(infiniteLoop([[1,2,3],[4,5,6],[7,8,9]],"left",3)); // [[2,3,4],[5,6,7],[8,9,1]]
+console.log(infiniteLoop([[1,2,3],[4,5,6],[7,8,9], [10,11]],"left",1)); // [[2,3,4],[5,6,7],[8,9,1]]
 // console.log(infiniteLoop([[1,2,3],[4,5,6],[7,8,9]],"right",4)); // [ [ 8, 9, 1 ], [ 2, 3, 4 ], [ 5, 6, 7 ] ]
 // console.log(infiniteLoop([[1,2],[3,4,5,6],[7,8,9,10]],"right",1)); // [[3,4],[5,6,7,8],[9,10,1,2]]
